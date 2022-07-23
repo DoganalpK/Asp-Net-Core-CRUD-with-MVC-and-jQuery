@@ -30,17 +30,20 @@ namespace dotNetCore_CRUD_MVC.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Comment")
-                        .IsRequired()
                         .HasColumnType("varchar(250)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("varchar(25)");
 
-                    b.Property<long>("IdentityNumber")
+                    b.Property<string>("IdentityNumber")
+                        .IsRequired()
                         .HasMaxLength(11)
-                        .HasColumnType("bigint");
+                        .HasColumnType("varchar(11)");
 
                     b.Property<string>("LastName")
                         .IsRequired()

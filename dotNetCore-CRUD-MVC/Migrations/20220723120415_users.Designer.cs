@@ -12,8 +12,8 @@ using dotNetCore_CRUD_MVC.Models;
 namespace dotNetCore_CRUD_MVC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220722072841_uUserModel")]
-    partial class uUserModel
+    [Migration("20220723120415_users")]
+    partial class users
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,17 +32,20 @@ namespace dotNetCore_CRUD_MVC.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Comment")
-                        .IsRequired()
                         .HasColumnType("varchar(250)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("varchar(25)");
 
-                    b.Property<long>("IdentityNumber")
+                    b.Property<string>("IdentityNumber")
+                        .IsRequired()
                         .HasMaxLength(11)
-                        .HasColumnType("bigint");
+                        .HasColumnType("varchar(11)");
 
                     b.Property<string>("LastName")
                         .IsRequired()

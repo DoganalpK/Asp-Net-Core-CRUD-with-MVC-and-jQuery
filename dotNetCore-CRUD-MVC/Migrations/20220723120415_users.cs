@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace dotNetCore_CRUD_MVC.Migrations
 {
-    public partial class uUserModel : Migration
+    public partial class users : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,10 +16,11 @@ namespace dotNetCore_CRUD_MVC.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    IdentityNumber = table.Column<string>(type: "varchar(11)", maxLength: 11, nullable: false),
                     FirstName = table.Column<string>(type: "varchar(25)", nullable: false),
                     LastName = table.Column<string>(type: "varchar(25)", nullable: false),
-                    IdentityNumber = table.Column<long>(type: "bigint", maxLength: 11, nullable: false),
-                    Comment = table.Column<string>(type: "varchar(250)", nullable: false),
+                    Comment = table.Column<string>(type: "varchar(250)", nullable: true),
+                    CityId = table.Column<int>(type: "int", nullable: false),
                     RegistrationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
