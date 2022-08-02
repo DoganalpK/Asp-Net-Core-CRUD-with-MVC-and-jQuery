@@ -56,7 +56,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.UpdatedTime)
                     </td>
-                    <td>
+                    <td width="200px">
                         <a onclick="showInPopup('@Url.Action("AddOrEdit","Users",new { id=item.Id },Context.Request.Scheme)','Update User')" class="btn btn-info">Edit</a>
                         <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return jQueryAjaxDelete(this);">
                             <input type="hidden" asp-for="@item.Id" />

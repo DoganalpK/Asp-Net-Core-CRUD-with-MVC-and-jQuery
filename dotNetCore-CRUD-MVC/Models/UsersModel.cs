@@ -33,7 +33,7 @@ namespace dotNetCore_CRUD_MVC.Models
         [DisplayName("City")]
         [Column(TypeName = "int")]
         [Required(ErrorMessage = "This Field is required.")]
-        public int CityId { get; set; }        
+        public int CityId { get; set; }
     }
 
     public class TimeEntity

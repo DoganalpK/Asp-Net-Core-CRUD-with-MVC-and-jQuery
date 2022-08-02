@@ -20,7 +20,7 @@ namespace dotNetCore_CRUD_MVC.Controllers
             return View(await _context.Users.ToListAsync());
         }
 
-        // GET: Users/AddOrEdit?id => Insert
+        // GET: Users/AddOrEdit?id   => Insert
         // GET: Users/AddOrEdit?id=5 => Update
         [NoDirectAccess]
         public async Task<IActionResult> AddOrEdit(int id)
@@ -71,6 +71,7 @@ namespace dotNetCore_CRUD_MVC.Controllers
             return Json(new { isValid = false, html = Helper.RenderRazorViewToString(this, "AddOrEdit", model) });
         }
 
+        // POST: Users/AddOrEdit/id?
         public async Task<IActionResult> Delete(int id)
         {
             if (id == 0)

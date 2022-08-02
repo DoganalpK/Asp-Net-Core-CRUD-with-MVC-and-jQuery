@@ -15,7 +15,8 @@ namespace dotNetCore_CRUD_MVC.Models
                 .ToTable("AspNetUsers", t => t.ExcludeFromMigrations());
         }
 
-        public override int SaveChanges()
+		// 'Create Time' and 'Update Time' for New record and Updated records
+		public override int SaveChanges()
         {
             var entries = ChangeTracker.Entries()
                 .Where(o => o.Entity is TimeEntity &&
@@ -33,5 +34,37 @@ namespace dotNetCore_CRUD_MVC.Models
 
             return base.SaveChanges();
         }
-    }
+
+		// 'Create Time' and 'Update Time' for New record and Updated records
+		public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+		{
+			var insertedEntries = this.ChangeTracker.Entries()
+								   .Where(x => x.State == EntityState.Added)
+								   .Select(x => x.Entity);
+
+			foreach (var insertedEntry in insertedEntries)
+			{
+				var auditableEntity = insertedEntry as TimeEntity;
+				if (auditableEntity != null)
+				{
+					auditableEntity.CreatedTime = DateTime.Now;
+				}
+			}
+
+			var modifiedEntries = this.ChangeTracker.Entries()
+					   .Where(x => x.State == EntityState.Modified)
+					   .Select(x => x.Entity);
+
+			foreach (var modifiedEntry in modifiedEntries)
+			{
+				var auditableEntity = modifiedEntry as TimeEntity;
+				if (auditableEntity != null)
+				{
+					auditableEntity.UpdatedTime = DateTime.Now;
+				}
+			}
+
+			return base.SaveChangesAsync(cancellationToken);
+		}
+	}
 }
