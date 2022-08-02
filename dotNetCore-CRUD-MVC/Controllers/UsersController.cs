@@ -23,7 +23,7 @@ namespace dotNetCore_CRUD_MVC.Controllers
         // GET: Users/AddOrEdit?id => Insert
         // GET: Users/AddOrEdit?id=5 => Update
         [NoDirectAccess]
-        public async Task<IActionResult> AddOrEdit(int id = 0)
+        public async Task<IActionResult> AddOrEdit(int id)
         {
             if (id == 0)
             {
@@ -39,7 +39,7 @@ namespace dotNetCore_CRUD_MVC.Controllers
             }
         }
 
-        // POST: User/AddOrEdit
+        // POST: Users/AddOrEdit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddOrEdit(int id, UsersModel model)
@@ -62,9 +62,9 @@ namespace dotNetCore_CRUD_MVC.Controllers
                     {
                         return NotFound();
                     }
-
-                    return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _context.Users.ToList()) });
                 }
+
+                return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _context.Users.ToList()) });
 
             }
 
@@ -74,9 +74,7 @@ namespace dotNetCore_CRUD_MVC.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             if (id == 0)
-            {
                 return NotFound();
-            }
 
             var model = await _context.Users.FindAsync(id);
             _context.Users.Remove(model);

@@ -9,7 +9,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<AppDbContext>(o => o.UseNpgsql(builder.Configuration.GetConnectionString("DbConnection")));
 
-// Enable Legacy Timestamp Behavior
+// Enable Legacy Timestamp Behavior Postgresql
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 
