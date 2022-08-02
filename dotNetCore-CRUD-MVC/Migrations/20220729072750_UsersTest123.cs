@@ -6,12 +6,12 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace dotNetCore_CRUD_MVC.Migrations
 {
-    public partial class users : Migration
+    public partial class UsersTest123 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "UserModel",
+                name: "Users",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -21,19 +21,19 @@ namespace dotNetCore_CRUD_MVC.Migrations
                     LastName = table.Column<string>(type: "varchar(25)", nullable: false),
                     Comment = table.Column<string>(type: "varchar(250)", nullable: true),
                     CityId = table.Column<int>(type: "int", nullable: false),
-                    RegistrationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    CreatedTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    UpdatedTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserModel", x => x.Id);
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "UserModel");
+                name: "Users");
         }
     }
 }

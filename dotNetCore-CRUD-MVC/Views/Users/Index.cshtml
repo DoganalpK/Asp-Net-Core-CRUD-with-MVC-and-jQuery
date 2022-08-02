@@ -1,0 +1,10 @@
+﻿@model IEnumerable<UsersModel>
+
+
+<section id="view-all">
+    @await Html.PartialAsync("_ViewAll", Model)
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
