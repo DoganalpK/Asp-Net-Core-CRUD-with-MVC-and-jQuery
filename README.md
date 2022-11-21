@@ -17,9 +17,7 @@ Asp-Net-Core-CRUD-with-MVC-and-jQuery
 
 ## Languages and Tools
 
-- [x] Read  .Net Core related resources
-- [x] .Net Core MVC project created
-- [x] DbContext defined
-- [x] CRUD methods written
-- [x] Written Ajax functions to connect with Controller
-- [x] Tests done
+- [x] C#
+- [x] .Net(5)
+- [x] Entityframework Core
+- [x] jQuery
