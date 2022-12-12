@@ -1,8 +1,3 @@
-<div id="top"></div>
-
-
-<!-- PROJECT LOGO -->
-<br />
 <div align="center">
   <h3 align="center">CRUD with .Net Core</h3>
 </div>
